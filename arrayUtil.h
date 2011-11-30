@@ -10,6 +10,7 @@
 
 void copyArray(int [], int [], int);
 void fillRandomArray(int [], int, int);
+int fillRandomInt(int, int);
 void print(int [], int);
 int sorted(int [], int);
 void swap(int [], int, int);

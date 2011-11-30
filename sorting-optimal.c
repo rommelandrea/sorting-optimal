@@ -60,10 +60,10 @@ void merge2(int a[], int inf, int mid, int sup) {
         k = 0;
         while (i <= mid && j <= sup) {
             while (a[i] <= a[j] && i <= mid) c[k++] = a[i++];
-            
-            while (a[i] >= a[j] && j <= sup) c[k++] = a[j++];                
+
+            while (a[i] >= a[j] && j <= sup) c[k++] = a[j++];
         }
-        
+
         while (i <= mid) c[k++] = a[i++];
 
         while (j <= sup) c[k++] = a[j++];
@@ -89,24 +89,67 @@ void mergesort2(int a[], int length) {
 
 void qsort1(int a[], int inf, int sup) {
     if (inf < sup) {
-        int x = a[inf];
-        int i = inf + 1;
-        int j = sup;
-        while (i <= j) {
-            if (a[i] <= x) i++;
-            else {
+        int x = a[sup];
+        int i, j;
+        i = j = inf;
+
+        while (j < sup) {
+            if (a[j] >= x) {
+                j++;
+            } else {
                 swap(a, i, j);
-                j--;
+                i++;
+                j++;
             }
         }
-        swap(a, inf, j);
-        qsort1(a, inf, j - 1);
-        qsort1(a, j + 1, sup);
+
+        swap(a, sup, i);
+        qsort1(a, inf, i - 1);
+        qsort1(a, i + 1, sup);
     }
 }
 
 void quicksort1(int a[], int length) {
     qsort1(a, 0, length - 1);
+}
+
+void qsort2(int a[], int inf, int sup) {
+    if (inf < sup) {
+        int x = a[sup];
+        int i, j;
+
+        i = inf;
+        j = sup - 1;
+
+        while (i <= j) {
+            if (a[i] < x) {
+                i++;
+            } else {
+                swap(a, i, j);
+                j--;
+            }
+        }
+
+        swap(a, i, sup);
+        qsort2(a, inf, i - 1);
+        qsort2(a, i + 1, sup);
+    }
+}
+
+void quicksort2(int a[], int length) {
+    qsort2(a, 0, length - 1);
+}
+
+void qsort3(int a[], int inf, int sup) {
+    if(inf<sup){
+        int x = a[fillRandomInt(inf, sup)];
+        
+        
+    }
+}
+
+void quicksort3(int a[], int length) {
+    qsort3(a, 0, length-1);
 }
 
 int main(int argc, char** argv) {
@@ -119,7 +162,7 @@ int main(int argc, char** argv) {
 
     //print(a, length);
 
-    mergesort2(a, length);
+    quicksort2(a, length);
 
     print(a, length);
 

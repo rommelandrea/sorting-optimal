@@ -31,6 +31,11 @@ void fillRandomArray(int a[], int length, int max) {
         a[i] = rand() % max;
 }
 
+int fillRandomInt(int min, int max) {
+    srand(time(NULL));
+    return (rand() % (max - min) + min);
+}
+
 /**
  * stampa l'array
  * @param a array da stampare
