@@ -141,30 +141,57 @@ void quicksort2(int a[], int length) {
 }
 
 void qsort3(int a[], int inf, int sup) {
-    if(inf<sup){
-        int x = a[fillRandomInt(inf, sup)];
+    if (inf < sup) {
+        int iPivot = a[inf + (rand() % (sup - inf + 1))];
+        int i = inf;
+        int j = inf;
+        int k = sup;
+        //swap(a, iPivot, inf);
+
+        printf("quicksort %d\t%d\n\n", inf, sup);
         
+        while (j <= k) {
+            if (a[j] < iPivot) {
+                swap(a, i, j);
+                i++;
+                j++;
+            }
+            if (a[j] == iPivot && j <= k) {
+                j++;
+            }
+            if (a[j] > iPivot && j <= k) {
+                swap(a, j, k);
+                k--;
+            }
+        }
+        //swap(a, inf, i-1);
         
+        qsort3(a, inf, i-1);
+        qsort3(a, j, sup);
     }
 }
 
 void quicksort3(int a[], int length) {
-    qsort3(a, 0, length-1);
+    qsort3(a, 0, length - 1);
 }
 
 int main(int argc, char** argv) {
     int length, max;
-    length = 20;
-    max = 20;
+    length = 40;
+    max = 80;
     int a[length];
+
+//    int b[length] = {10, 16, 5, 6, 3, 0, 15, 16, 5, 15, 18, 15, 6, 4, 1, 14, 1, 8, 3, 14};
 
     fillRandomArray(a, length, max);
 
-    //print(a, length);
-
-    quicksort2(a, length);
-
     print(a, length);
+    printf("inizio ordinamenti\n");
+    quicksort3(a, length);
+
+/*
+    print(a, length);
+*/
 
     if (sorted(a, length)) {
         printf("l'array e' ordinato");
