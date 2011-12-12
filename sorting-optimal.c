@@ -9,6 +9,10 @@
 
 void qsort1(int [], int, int);
 void quicksort1(int [], int);
+void qsort2(int [], int, int);
+void quicksort2(int [], int);
+void qsort3(int [], int, int);
+void quicksort3(int [], int);
 void merge(int [], int, int, int);
 void msort(int [], int, int);
 void mergesort(int [], int);
